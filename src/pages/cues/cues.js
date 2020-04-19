@@ -55,6 +55,7 @@ const Cues = () => {
           </CueCard>
         ))}
       </CuesContainer>
+
       <FixedPlusButton to='/cue-form'>
         <img src='/assets/plus.svg'/>
       </FixedPlusButton>

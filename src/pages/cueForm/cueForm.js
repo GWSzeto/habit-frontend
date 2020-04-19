@@ -23,15 +23,13 @@ const CueForm = () => {
   const { register, handleSubmit, errors } = useForm()
 
   const onSubmit = async data => {
-    const { data: newDAta, error } = await createCue(data)
-    console.log("data: ", newDAta)
-    console.log(error?.[0]?.message)
+    await createCue(data)
     history.push('/cues')
   }
 
   return (
     <CueFormLayout>
-      <FixedBackButton>
+      <FixedBackButton onClick={() => history.goBack()}>
         <img src='/assets/back_arrow.svg'/>
       </FixedBackButton>
 

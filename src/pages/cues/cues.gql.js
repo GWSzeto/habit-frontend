@@ -1,6 +1,6 @@
 import { useQuery, gql } from '@apollo/client'
 
-const GET_CUES = gql`
+export const GET_CUES = gql`
   query getCues {
     getCues {
       id
