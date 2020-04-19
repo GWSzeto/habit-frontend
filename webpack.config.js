@@ -78,7 +78,7 @@ module.exports = env => {
       new Dotenv({
         path: finalPath,
       }),
-      new webpack.DefinePlugin({
+      new webpack.EnvironmentPlugin({
         GRAPHQL_ENDPOINT: '',
       }),
     ]
