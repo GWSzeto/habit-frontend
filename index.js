@@ -8,7 +8,7 @@ import {
 } from '@apollo/client'
 import { Reset } from 'styled-reset'
 
-import App from './app'
+import App from './src/app'
 
 // graphql
 const cache = new InMemoryCache()

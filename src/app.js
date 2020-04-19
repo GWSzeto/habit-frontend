@@ -15,6 +15,9 @@ const App = () => {
         <Route path='/cues'>
           <Cues/>
         </Route>
+        <Route>
+          <Cues/>
+        </Route>
       </Switch>
     </Router>
   )

@@ -20,12 +20,15 @@ module.exports = env => {
   return {
     entry: {
       polyfill: 'babel-polyfill',
-      app: './src/index.js'
+      app: './index.js'
     },
     output: {
-      path: path.resolve(__dirname, 'public'),
+      path: path.resolve(__dirname, 'build'),
       filename: '[name].js',
       publicPath: '/',
+    },
+    devServer: {
+      contentBase: './build',
     },
     module: {
       rules: [
@@ -72,8 +75,8 @@ module.exports = env => {
     },
     plugins: [
       new HtmlWebPackPlugin({
-        template: "./src/index.html",
-        filename: "./index.html"
+        inject: true,
+        template: path.resolve('./index.html'),
       }),
       new webpack.DefinePlugin(envKeys),
       new CopyWebPackPlugin([
