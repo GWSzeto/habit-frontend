@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CopyWebPackPlugin = require('copy-webpack-plugin');
-const dotenv = require('dotenv');
+const Dotenv = require('dotenv-webpack');
 const fs = require('fs');
 
 module.exports = env => {
@@ -10,12 +10,6 @@ module.exports = env => {
   const basePath = currentPath + '/.env';
   const envPath = env && env.ENVIRONMENT ? basePath + env.ENVIRONMENT : basePath;
   const finalPath = fs.existsSync(envPath) ? envPath : basePath;
-  const fileEnv = dotenv.config({ path: finalPath }).parsed;
-  const envKeys = fileEnv ? Object.keys(fileEnv).reduce((prev, next) => {
-    prev[`process.env.${next}`] = JSON.stringify(fileEnv[next]);
-
-    return prev;
-  }, {}) : {};
 
   return {
     entry: {
@@ -78,10 +72,15 @@ module.exports = env => {
         inject: true,
         template: path.resolve('./index.html'),
       }),
-      new webpack.DefinePlugin(envKeys),
       new CopyWebPackPlugin([
         { from: "assets", to: "assets"}
-      ])
+      ]),
+      new Dotenv({
+        path: finalPath,
+      }),
+      new webpack.DefinePlugin({
+        GRAPHQL_ENDPOINT: '',
+      }),
     ]
   }
 };

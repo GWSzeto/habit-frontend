@@ -20,7 +20,7 @@ const Cues = () => {
     <CuesLayout>
       <CuesContainer>
         {cues && cues.map(({ id, location, time, date, emotionalState, otherPeople, precedingAction, habit }) => (
-          <CueCard>
+          <CueCard key={id}>
             <Title>{habit}</Title>
             <Field alternate>
               <div>Location</div>
