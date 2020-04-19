@@ -10,6 +10,8 @@ import { Reset } from 'styled-reset'
 
 import App from './src/app'
 
+console.log("graphql endpoint: ", process.env.GRAPHQL_ENDPOINT)
+
 // graphql
 const cache = new InMemoryCache()
 const httpLink = createHttpLink({
